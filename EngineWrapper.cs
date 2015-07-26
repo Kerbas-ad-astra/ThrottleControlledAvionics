@@ -24,23 +24,31 @@ namespace ThrottleControlledAvionics
 		public bool    throttleLocked;
 		public float   throttle;
 		public float   thrustMod;
+		public float   VSF; //vertical speed factor
+		public bool    isVSC; //vertical speed controller
 		public TCARole Role;
 		public CenterOfThrustQuery thrustInfo;
+
+		readonly float zeroISP;
 
 		public EngineWrapper(ModuleEngines engine) 
 		{
 			thrustController.setMaster(ThrustPI);
 			einfo = engine.part.GetModule<TCAEngineInfo>();
+			zeroISP = engine.atmosphereCurve.Evaluate(0f);
 			this.engine = engine;
 		}
 
 		#region methods
 		public void InitLimits()
 		{
+			isVSC = false;
 			switch(Role)
 			{
 			case TCARole.MAIN:
+			case TCARole.BALANCE:
 				limit = best_limit = 1f;
+				isVSC = true;
 				break;
 			case TCARole.MANEUVER:
 				limit = best_limit = 0f;
@@ -57,12 +65,16 @@ namespace ThrottleControlledAvionics
 			thrustInfo = new CenterOfThrustQuery();
 			engine.OnCenterOfThrustQuery(thrustInfo);
 			thrustInfo.dir.Normalize();
-			//compute velocity thrust modifier
-			if(engine.useVelCurve)
+			//compute velocity and atmosphere thrust modifier
+			thrustMod = engine.atmosphereCurve.Evaluate((float)(engine.vessel.staticPressurekPa * PhysicsGlobals.KpaToAtmospheres))/zeroISP;
+			if(engine.atmChangeFlow)
 			{
-				var vc = engine.velCurve;
-				thrustMod = vc.Evaluate((float)FlightGlobals.ActiveVessel.srf_velocity.magnitude);
-			} else thrustMod = 1f;
+				thrustMod = (float)(part.atmDensity / 1.225);
+				if(engine.useAtmCurve)
+					thrustMod = engine.atmCurve.Evaluate(thrustMod);
+			}
+			if(engine.useVelCurve)
+				thrustMod *= engine.velCurve.Evaluate((float)part.machNumber);
 			//update Role
 			throttleLocked =  engine.throttleLocked;
 			if(einfo != null)
@@ -120,7 +132,7 @@ namespace ThrottleControlledAvionics
 
 		public void forceThrustPercentage(float value) { engine.thrustPercentage = value; }
 
-		public bool isEnabled { get { return engine.EngineIgnited; } }
+		public bool isOperational { get { return engine.isOperational; } }
 
 		public string name
 		{
