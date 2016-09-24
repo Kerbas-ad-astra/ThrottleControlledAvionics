@@ -3,14 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{06BD5A34-D2DE-413A-A815-DFC1EBEA8B5D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ThrottleControlledAvionics</RootNamespace>
     <AssemblyName>ThrottleControlledAvionics</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <ReleaseVersion>1.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -21,6 +18,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
+    <NoWarn>0649</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -29,58 +27,185 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
+    <NoWarn>0649</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\System.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\System.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\System.Core.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\System.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\Mono.Cecil.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Security">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\Mono.Security.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\Mono.Security.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\System.Xml.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="TDx.TDxInput">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\TDx.TDxInput.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\System.Xml.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\Hangar\KSP_test_1.0.4\KSP_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="KSPCore">
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\KSPCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="KSPUtil">
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\KSPUtil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\UnityEngine.Networking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SaveUpgradePipeline.Core">
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\SaveUpgradePipeline.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="KSPAssets">
+      <HintPath>..\KSP-test\KSP_test_1.1.3\KSP_Data\Managed\KSPAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="ThrottleControlledAvionics.cs" />
-    <Compile Include="ToolbarWrapper.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="TCAGui.cs" />
     <Compile Include="TCAConfig.cs" />
-    <Compile Include="PI_Controller.cs" />
-    <Compile Include="DropDownList.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="TCAEngineInfo.cs" />
     <Compile Include="EngineWrapper.cs" />
-    <Compile Include="TCAToolbarManager.cs" />
+    <Compile Include="VesselWrapper.cs" />
+    <Compile Include="Modules\RCSOptimizer.cs" />
+    <Compile Include="Modules\EngineOptimizer.cs" />
+    <Compile Include="ModuleTCA.cs" />
+    <Compile Include="WayPoints.cs" />
+    <Compile Include="EngineConfig.cs" />
+    <Compile Include="TCAScenario.cs" />
+    <Compile Include="GUI\TCAGui.cs" />
+    <Compile Include="GUI\EnginesProfileEditor.cs" />
+    <Compile Include="GUI\TCAToolbarManager.cs" />
+    <Compile Include="Macros\TCAMacro.cs" />
+    <Compile Include="Macros\Conditions.cs" />
+    <Compile Include="Macros\MacroNodes.cs" />
+    <Compile Include="GUI\TCAMacroEditor.cs" />
+    <Compile Include="Macros\Condition.cs" />
+    <Compile Include="Macros\MacroNode.cs" />
+    <Compile Include="Macros\BlockMacroNode.cs" />
+    <Compile Include="Utils\ComponentDB.cs" />
+    <Compile Include="Macros\ConditionMacroNode.cs" />
+    <Compile Include="Macros\BaseMacroNodes.cs" />
+    <Compile Include="Macros\LoopsAndBranches.cs" />
+    <Compile Include="Modules\MacroProcessor.cs" />
+    <Compile Include="Modules\AttitudeControl.cs" />
+    <Compile Include="Modules\ThrottleControl.cs" />
+    <Compile Include="Modules\TranslationControl.cs" />
+    <Compile Include="Modules\TimeWarpControl.cs" />
+    <Compile Include="Modules\SASBlocker.cs" />
+    <Compile Include="GUI\TCAManual.cs" />
+    <Compile Include="TCAModulesDatabase.cs" />
+    <Compile Include="Modules\SquadControl.cs" />
+    <Compile Include="GUI\Panels\OnPlanetPanel.cs" />
+    <Compile Include="GUI\Panels\NavigationPanel.cs" />
+    <Compile Include="GUI\Panels\InOrbitPanel.cs" />
+    <Compile Include="GUI\Panels\AttitudePanel.cs" />
+    <Compile Include="GUI\Panels\MacrosPanel.cs" />
+    <Compile Include="GUI\Panels\SquadPanel.cs" />
+    <Compile Include="VesselProps\VesselProps.cs" />
+    <Compile Include="GUI\Elements\ToolbarWrapper.cs" />
+    <Compile Include="GUI\Elements\ControlPanel.cs" />
+    <Compile Include="VesselProps\PhysicalProps.cs" />
+    <Compile Include="VesselProps\GeometryProps.cs" />
+    <Compile Include="VesselProps\AltitudeProps.cs" />
+    <Compile Include="VesselProps\VerticalSpeedProps.cs" />
+    <Compile Include="VesselProps\HorizontalSpeedProps.cs" />
+    <Compile Include="VesselProps\EnginesProps.cs" />
+    <Compile Include="VesselProps\TorqueProps.cs" />
+    <Compile Include="VesselProps\ControlProps.cs" />
+    <Compile Include="VesselProps\InfoProps.cs" />
+    <Compile Include="VesselProps\OnPlanetProps.cs" />
+    <Compile Include="Modules\Orbit\TrajectoryCalculator.cs" />
+    <Compile Include="Modules\Orbit\BallisticJump.cs" />
+    <Compile Include="Modules\Orbit\DeorbitAutopilot.cs" />
+    <Compile Include="Modules\Orbit\Trajectories\RendezvousTrajectory.cs" />
+    <Compile Include="Modules\Orbit\Trajectories\TrajectoryBase.cs" />
+    <Compile Include="Modules\Orbit\Trajectories\LandingTrajectory.cs" />
+    <Compile Include="Modules\Orbit\LandingTrajectoryAutopilot.cs" />
+    <Compile Include="Modules\Orbit\MatchVelocityAutopilot.cs" />
+    <Compile Include="Modules\Orbit\ManeuverAutopilot.cs" />
+    <Compile Include="Modules\Planet\AltitudeControl.cs" />
+    <Compile Include="Modules\Planet\Anchor.cs" />
+    <Compile Include="Modules\Planet\AutoLander.cs" />
+    <Compile Include="Modules\Planet\BearingControl.cs" />
+    <Compile Include="Modules\Planet\CollisionPreventionSystem.cs" />
+    <Compile Include="Modules\Planet\CruiseControl.cs" />
+    <Compile Include="Modules\Planet\FlightStabilizer.cs" />
+    <Compile Include="Modules\Planet\HorizontalSpeedControl.cs" />
+    <Compile Include="Modules\Planet\PointNavigator.cs" />
+    <Compile Include="Modules\Planet\Radar.cs" />
+    <Compile Include="Modules\Planet\VerticalSpeedControl.cs" />
+    <Compile Include="Modules\Planet\VTOLAssist.cs" />
+    <Compile Include="Utils\OrbitDBG.cs" />
+    <Compile Include="Modules\Planet\VTOLControl.cs" />
+    <Compile Include="Utils\LambertSolver.cs" />
+    <Compile Include="Utils\AtmoSim.cs" />
+    <Compile Include="TCAComponent.cs" />
+    <Compile Include="GUI\Panels\TogglesPanel.cs" />
+    <Compile Include="Modules\Orbit\ToOrbitAutopilot.cs" />
+    <Compile Include="Modules\Orbit\Components\ToOrbitExecutor.cs" />
+    <Compile Include="Modules\Orbit\Components\ManeuverExecutor.cs" />
+    <Compile Include="Modules\Orbit\RendezvousAutopilot.cs" />
+    <Compile Include="Utils\Coordinates.cs" />
+    <Compile Include="Modules\Orbit\Components\OrbitalComponent.cs" />
+    <Compile Include="Modules\Orbit\Components\TrajectoryOptimizers.cs" />
+    <Compile Include="Modules\Orbit\Trajectories\CurrentTrajectory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Modules\" />
+    <Folder Include="GUI\" />
+    <Folder Include="Macros\" />
+    <Folder Include="Utils\" />
+    <Folder Include="GUI\Panels\" />
+    <Folder Include="VesselProps\" />
+    <Folder Include="GUI\Elements\" />
+    <Folder Include="Modules\Planet\" />
+    <Folder Include="Modules\Orbit\" />
+    <Folder Include="Modules\Orbit\Trajectories\" />
+    <Folder Include="Modules\Orbit\Components\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AT_Utils\AT_Utils.csproj">
+      <Project>{64CC36A2-0610-4F74-9F31-3D4E22866B7E}</Project>
+      <Name>AT_Utils</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="ChanegLog.md" />
+    <None Include="export_git.sh" />
+    <None Include="extract_csv.sh" />
+    <None Include="make_release" />
+    <None Include="make-release.sh" />
+    <None Include="README.md" />
+    <None Include="GameData\ThrottleControlledAvionics\Plugins\PluginData\ThrottleControlledAvionics\TCA.glob" />
+  </ItemGroup>
 </Project>
